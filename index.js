@@ -1,5 +1,3 @@
-import Replicate from "replicate";
-
 const alternative = [
   "Same here, dude.",
   "That's cool! Go on...",

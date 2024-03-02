@@ -1,3 +1,5 @@
+import Replicate from "replicate";
+
 const alternative = [
   "Same here, dude.",
   "That's cool! Go on...",
@@ -6,20 +8,36 @@ const alternative = [
   "Hey, I'm listening..."
 ];
 
-function compare(string) {
-  fetch('https://chatgpt.apinepdev.workers.dev/?question=' + encodeURIComponent(string))
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      const response = data.answer;
-      addChat(string, response);
-    })
-    .catch(error => {
-      console.error('Error fetching response from API:', error);
-      const item = alternative[Math.floor(Math.random() * alternative.length)];
 
-      addChat(string, item);
-    });
+const replicate = new Replicate({
+  auth: "9a8cf14d-1aab-4de7-8857-a4dcb2ce765b",
+});
+
+
+
+function compare(string) {
+  const output = await replicate.run(
+    "rahulrohilla05/codecrusade:562d13feb0aeb15023104e5d21cf0a821fcd994f9fc2c78c94090f2580495325",
+    {
+      input: {
+        top_k: 50,
+        top_p: 0.95,
+        prompt: string,
+        temperature: 0.7,
+        max_new_tokens: 256,
+        min_new_tokens: -1,
+        repetition_penalty: 1
+      }
+    }
+  );
+  const response = output.join('');
+  addChat(string, response);
+})
+  .catch(error => {
+    console.error('Error fetching response from API:', error);
+    const item = alternative[Math.floor(Math.random() * alternative.length)];
+    addChat(string, item);
+  });
 }
 
 

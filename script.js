@@ -16,6 +16,27 @@ function compare(triggerArray, replyArray, string) {
     });
 }
 
+function sendMessage() {
+  const inputField = document.getElementById("input");
+  let input = inputField.value.trim();
+  if (input !== "") {
+    output(input);
+    inputField.value = "";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sendButton = document.getElementById("send-button");
+  sendButton.addEventListener("click", sendMessage);
+  
+  const inputField = document.getElementById("input");
+  inputField.addEventListener("keydown", function (e) {
+    if (e.code === "Enter") {
+      sendMessage();
+    }
+  });
+});
+
 // Function to add the fetched chat to the UI
 function addChat(input, product) {
   const mainDiv = document.getElementById("message-section");

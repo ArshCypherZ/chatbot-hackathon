@@ -33,20 +33,16 @@ function output(input) {
 function sendMessage() {
   const inputField = document.getElementById("input");
   let input = inputField.value.trim();
-  if (input !== "") {
-    output(input);
-    inputField.value = "";
-  }
+  input != "" && output(input);
+  inputField.value = "";
 }
-
 document.addEventListener("DOMContentLoaded", () => {
-  const sendButton = document.getElementById("send-button");
-  sendButton.addEventListener("click", sendMessage);
-  
   const inputField = document.getElementById("input");
   inputField.addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
-      sendMessage();
+      let input = inputField.value.trim();
+      input != "" && output(input);
+      inputField.value = "";
     }
   });
 });

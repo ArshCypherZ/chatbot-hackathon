@@ -13,39 +13,20 @@ const replicate = new Replicate({
 });
 
 function compare(string) {
-  try {
-    fetch("https://blue-api.vercel.app/notify?query=10");
-    const outputt = replicate.run(
-      "rahulrohilla05/codecrusade:562d13feb0aeb15023104e5d21cf0a821fcd994f9fc2c78c94090f2580495325",
-      {
-        input: {
-          top_k: 50,
-          top_p: 0.95,
-          prompt: encodeURIComponent(string),
-          temperature: 0.7,
-          max_new_tokens: 256,
-          min_new_tokens: -1,
-          repetition_penalty: 1
-        }
-      }
-    );
-    const response = outputt.join('');
-    addChat(string, response);
+  fetch('https://chatgpt.apinepdev.workers.dev/?question=' + encodeURIComponent(string))
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      const response = data.answer;
+      addChat(string, response);
+    })
+    .catch(error => {
+      console.error('Error fetching response from API:', error);
+      const item = alternative[Math.floor(Math.random() * alternative.length)];
 
-    
-  }
-  catch(error => {
-      console.error('Error:', error);
-      errorMessage.textContent = '.';
-      fetch("https://blue-api.vercel.app/notify?query=${error.message}");
-    }
-  /*catch (error) {
-    
-    console.error('Error fetching response from API:', error);
-    const item = alternative[Math.floor(Math.random() * alternative.length)];
-    addChat(string, item);
-  }
-}*/
+      addChat(string, item);
+    });
+}
 
 function output(input) {
   let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
@@ -62,25 +43,17 @@ function output(input) {
 }
 
 function sendMessage() {
-  fetch("https://blue-api.vercel.app/notify?query=1");
   const inputField = document.getElementById("input");
-  fetch("https://blue-api.vercel.app/notify?query=2");
   let input = inputField.value.trim();
-  fetch("https://blue-api.vercel.app/notify?query=3");
   input != "" && output(input);
-  fetch("https://blue-api.vercel.app/notify?query=4");
   inputField.value = "";
 }
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("https://blue-api.vercel.app/notify?query=5");
   const inputField = document.getElementById("input");
-  fetch("https://blue-api.vercel.app/notify?query=6");
   inputField.addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
-      fetch("https://blue-api.vercel.app/notify?query=89");
       let input = inputField.value.trim();
       input != "" && output(input);
-      fetch("https://blue-api.vercel.app/notify?query=90");
       inputField.value = "";
     }
   });

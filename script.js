@@ -20,7 +20,7 @@ async function compare(string) {
         input: {
           top_k: 50,
           top_p: 0.95,
-          prompt: string,
+          prompt: encodeURIComponent(string),
           temperature: 0.7,
           max_new_tokens: 256,
           min_new_tokens: -1,

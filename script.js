@@ -64,9 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   inputField.addEventListener("keydown", async function (e) {
     if (e.code === "Enter") {
       let input = inputField.value.trim();
-      if (input !== "") {
-        await output(input);
-      }
+      input != "" && await output(input);
       inputField.value = "";
     }
   });

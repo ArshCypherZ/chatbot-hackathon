@@ -1,7 +1,7 @@
 function compare(triggerArray, replyArray, string) {
   // Make an API call here to fetch the appropriate response based on the user input
   // For example, using fetch API
-  fetch('https://your-api-endpoint.com/response?query=' + encodeURIComponent(string))
+  fetch('https://chatgpt.apinepdev.workers.dev/?question=' + encodeURIComponent(string))
     .then(response => response.json())
     .then(data => {
       // Assuming the API returns a single response

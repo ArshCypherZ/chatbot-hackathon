@@ -38,8 +38,7 @@ async function compare(string) {
 }
 
 
-
-function output(input) {
+async function output(input) {
   let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
   text = text
     .replace(/[\W_]/g, " ")
@@ -50,8 +49,9 @@ function output(input) {
     .replace(/ please/g, "")
     .trim();
 
-  compare(text);
+  await compare(text);
 }
+
 
 function sendMessage() {
   const inputField = document.getElementById("input");

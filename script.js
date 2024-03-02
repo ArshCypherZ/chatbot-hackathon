@@ -10,7 +10,8 @@ function compare(string) {
   fetch('https://chatgpt.apinepdev.workers.dev/?question=' + encodeURIComponent(string))
     .then(response => response.json())
     .then(data => {
-      const response = data.response;
+      console.log(data);
+      const response = data.answer;
       addChat(string, response);
     })
     .catch(error => {
@@ -20,6 +21,8 @@ function compare(string) {
       addChat(string, item);
     });
 }
+
+
 
 function output(input) {
   let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");

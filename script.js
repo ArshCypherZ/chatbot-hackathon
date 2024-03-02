@@ -14,7 +14,7 @@ const replicate = new Replicate({
 
 async function compare(string) {
   try {
-    const output = await replicate.run(
+    const outputt = await replicate.run(
       "rahulrohilla05/codecrusade:562d13feb0aeb15023104e5d21cf0a821fcd994f9fc2c78c94090f2580495325",
       {
         input: {
@@ -28,7 +28,7 @@ async function compare(string) {
         }
       }
     );
-    const response = output.join('');
+    const response = outputt.join('');
     addChat(string, response);
   } catch (error) {
     console.error('Error fetching response from API:', error);
@@ -53,10 +53,10 @@ async function output(input) {
 }
 
 
-function sendMessage() {
+async function sendMessage() {
   const inputField = document.getElementById("input");
   let input = inputField.value.trim();
-  input != "" && output(input);
+  input != "" && await output(input);
   inputField.value = "";
 }
 document.addEventListener("DOMContentLoaded", () => {
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   inputField.addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
       let input = inputField.value.trim();
-      input != "" && output(input);
+      input != "" && await output(input);
       inputField.value = "";
     }
   });

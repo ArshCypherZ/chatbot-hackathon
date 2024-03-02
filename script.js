@@ -54,20 +54,15 @@ function output(input) {
 function sendMessage() {
   const inputField = document.getElementById("input");
   let input = inputField.value.trim();
-  if (input != "") {
-    output(input);
-  }
+  input != "" && output(input);
   inputField.value = "";
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("input");
   inputField.addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
       let input = inputField.value.trim();
-      if (input != "") {
-        output(input);
-      }
+      input != "" && output(input);
       inputField.value = "";
     }
   });

@@ -12,9 +12,9 @@ const replicate = new Replicate({
   auth: "9a8cf14d-1aab-4de7-8857-a4dcb2ce765b",
 });
 
-async function compare(string) {
+function compare(string) {
   try {
-    const outputt = await replicate.run(
+    const outputt = replicate.run(
       "rahulrohilla05/codecrusade:562d13feb0aeb15023104e5d21cf0a821fcd994f9fc2c78c94090f2580495325",
       {
         input: {
@@ -38,7 +38,7 @@ async function compare(string) {
 }
 
 
-async function output(input) {
+function output(input) {
   let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
   text = text
     .replace(/[\W_]/g, " ")
@@ -49,27 +49,25 @@ async function output(input) {
     .replace(/ please/g, "")
     .trim();
 
-  await compare(text);
+  compare(text);
 }
 
-
-async function sendMessage() {
+function sendMessage() {
   const inputField = document.getElementById("input");
   let input = inputField.value.trim();
-  input != "" && await output(input);
+  input != "" && output(input);
   inputField.value = "";
 }
 document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("input");
-  inputField.addEventListener("keydown", async function (e) {
+  inputField.addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
       let input = inputField.value.trim();
-      input != "" && await output(input);
+      input != "" && output(input);
       inputField.value = "";
     }
   });
 });
-
 
 function addChat(input, product) {
   const mainDiv = document.getElementById("message-section");

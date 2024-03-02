@@ -1,5 +1,3 @@
-import Replicate from "replicate";
-
 const alternative = [
   "Same here, dude.",
   "That's cool! Go on...",
@@ -7,10 +5,6 @@ const alternative = [
   "Ask something else...",
   "Hey, I'm listening..."
 ];
-
-const replicate = new Replicate({
-  auth: "9a8cf14d-1aab-4de7-8857-a4dcb2ce765b",
-});
 
 function compare(string) {
   fetch('https://chatgpt.apinepdev.workers.dev/?question=' + encodeURIComponent(string))
@@ -27,6 +21,8 @@ function compare(string) {
       addChat(string, item);
     });
 }
+
+
 
 function output(input) {
   let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");

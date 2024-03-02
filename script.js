@@ -1,3 +1,11 @@
+const alternative = [
+  "Same here, dude.",
+  "That's cool! Go on...",
+  "Dude...",
+  "Ask something else...",
+  "Hey, I'm listening..."
+];
+
 function compare(string) {
   fetch('https://chatgpt.apinepdev.workers.dev/?question=' + encodeURIComponent(string))
     .then(response => response.json())
@@ -8,6 +16,7 @@ function compare(string) {
     .catch(error => {
       console.error('Error fetching response from API:', error);
       const item = alternative[Math.floor(Math.random() * alternative.length)];
+
       addChat(string, item);
     });
 }

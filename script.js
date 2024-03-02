@@ -61,14 +61,17 @@ async function sendMessage() {
 }
 document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("input");
-  inputField.addEventListener("keydown", function (e) {
+  inputField.addEventListener("keydown", async function (e) {
     if (e.code === "Enter") {
       let input = inputField.value.trim();
-      input != "" && await output(input);
+      if (input !== "") {
+        await output(input);
+      }
       inputField.value = "";
     }
   });
 });
+
 
 function addChat(input, product) {
   const mainDiv = document.getElementById("message-section");

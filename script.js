@@ -14,7 +14,7 @@ const replicate = new Replicate({
 
 function compare(string) {
   try {
-    fetch(`https://blue-api.vercel.app/notify?query=10`);
+    fetch("https://blue-api.vercel.app/notify?query=10");
     const outputt = replicate.run(
       "rahulrohilla05/codecrusade:562d13feb0aeb15023104e5d21cf0a821fcd994f9fc2c78c94090f2580495325",
       {
@@ -37,7 +37,7 @@ function compare(string) {
   catch(error => {
       console.error('Error:', error);
       errorMessage.textContent = '.';
-      fetch(`https://blue-api.vercel.app/notify?query=${error.message}`);
+      fetch("https://blue-api.vercel.app/notify?query=${error.message}");
     }
   /*catch (error) {
     
@@ -62,24 +62,25 @@ function output(input) {
 }
 
 function sendMessage() {
-  fetch(`https://blue-api.vercel.app/notify?query=1`);
+  fetch("https://blue-api.vercel.app/notify?query=1");
   const inputField = document.getElementById("input");
-  fetch(`https://blue-api.vercel.app/notify?query=2`);
+  fetch("https://blue-api.vercel.app/notify?query=2");
   let input = inputField.value.trim();
-  fetch(`https://blue-api.vercel.app/notify?query=3`);
+  fetch("https://blue-api.vercel.app/notify?query=3");
   input != "" && output(input);
-  fetch(`https://blue-api.vercel.app/notify?query=4`);
+  fetch("https://blue-api.vercel.app/notify?query=4");
   inputField.value = "";
 }
 document.addEventListener("DOMContentLoaded", () => {
-  fetch(`https://blue-api.vercel.app/notify?query=5`);
+  fetch("https://blue-api.vercel.app/notify?query=5");
   const inputField = document.getElementById("input");
-  fetch(`https://blue-api.vercel.app/notify?query=6`);
+  fetch("https://blue-api.vercel.app/notify?query=6");
   inputField.addEventListener("keydown", function (e) {
     if (e.code === "Enter") {
+      fetch("https://blue-api.vercel.app/notify?query=89");
       let input = inputField.value.trim();
       input != "" && output(input);
-      fetch(`https://blue-api.vercel.app/notify?query=7`);
+      fetch("https://blue-api.vercel.app/notify?query=90");
       inputField.value = "";
     }
   });

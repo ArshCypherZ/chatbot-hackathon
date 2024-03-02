@@ -16,6 +16,20 @@ function compare(triggerArray, replyArray, string) {
     });
 }
 
+function output(input) {
+  let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
+  text = text
+    .replace(/[\W_]/g, " ")
+    .replace(/ a /g, " ")
+    .replace(/i feel /g, "")
+    .replace(/whats/g, "what is")
+    .replace(/please /g, "")
+    .replace(/ please/g, "")
+    .trim();
+
+  compare(userMessage, botReply, text);
+}
+
 function sendMessage() {
   const inputField = document.getElementById("input");
   let input = inputField.value.trim();
